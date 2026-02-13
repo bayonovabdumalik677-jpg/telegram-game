@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crash Game</title>
+<style>
+body { background:#0f172a; color:white; text-align:center; font-family:sans-serif; }
+button { padding:15px 30px; font-size:18px; background:#00c896; border:none; border-radius:10px; }
+</style>
+</head>
+<body>
+
+<h1 id="multiplier">x1.00</h1>
+<button onclick="startGame()">Boshlash</button>
+
+<script>
+let running = false;
+
+function startGame() {
+  if(running) return;
+  running = true;
+  let value = 1;
+  let interval = setInterval(() => {
+    value += 0.1;
+    document.getElementById("multiplier").innerText = "x" + value.toFixed(2);
+    if(value > Math.random()*5) {
+      clearInterval(interval);
+      running = false;
+    }
+  }, 100);
+}
+</script>
+
+</body>
+</html>
